@@ -16,9 +16,6 @@ def create_app():
     jwt.init_app(app)
     mail.init_app(app)
 
-    with app.app_context():
-        db.create_all()
-
     from routes.auth import auth
     from routes.upload import upload
     from routes.email import email_bp
@@ -26,6 +23,11 @@ def create_app():
     app.register_blueprint(auth)
     app.register_blueprint(upload)
     app.register_blueprint(email_bp)
+
+
+    from models.user import User
+    with app.app_context():
+        db.create_all()
 
     # ⚙️ MIDDLEWARE
 
