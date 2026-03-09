@@ -22,17 +22,3 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.getenv("MAIL_USERNAME")
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
-```
-
-Key change — `SQLALCHEMY_DATABASE_URI` now reads from `DATABASE_URL` environment variable first. Render will provide this automatically when you add a database.
-
----
-
-### ✅ Step 4 — Push to GitHub
-
-Make sure your project is on GitHub. Check your `.gitignore` has:
-```
-venv/
-.env
-__pycache__/
-*.pyc
