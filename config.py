@@ -12,7 +12,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.getenv(
         "DATABASE_URL",
         f"mysql+pymysql://root:{password}@localhost/flaskdb"
-    )
+    ).replace("postgres://", "postgresql://")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
     UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", "uploads")
