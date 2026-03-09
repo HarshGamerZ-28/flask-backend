@@ -16,6 +16,9 @@ def create_app():
     jwt.init_app(app)
     mail.init_app(app)
 
+    with app.app_context():
+        db.create_all()
+
     from routes.auth import auth
     from routes.upload import upload
     from routes.email import email_bp
